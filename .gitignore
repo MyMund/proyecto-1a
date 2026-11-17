@@ -1,0 +1,18 @@
+# Archivos compilados y paquetes de Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Carpetas de compilación y NetBeans
+build/
+target/
+nbproject/private/
+
+# Archivos temporales de editores y sistemas operativos
+.DS_Store
+Thumbs.db
+*~
+*.swp
+.vscode/
+.idea/
