@@ -4,6 +4,9 @@
 *.war
 *.ear
 
+# Carpeta de compilación
+out/
+
 # Carpetas de compilación y NetBeans
 build/
 target/
