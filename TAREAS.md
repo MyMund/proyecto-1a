@@ -12,7 +12,7 @@
 |---|---|---|---|---|---|---|---|---|
 | T01 | `organizacion/asignaciones` | Crear `TAREAS.md`, acordar responsables y revisores; incorporar esta guía en `docs/`. | — | Israel Acosta Mundo  | MyMund  | Israel Acosta Mundo  | Integrado | https://github.com/MyMund/proyecto-1a/pull/1  |
 | T02 | `estructura/base` | Crear la base de archivos, `.gitignore` e `index.html` mínimo. Definir los espacios de sus secciones. | T01 | Israel Acosta Mundo | MyMund |Israel Acosta Mundo  | Integrado | https://github.com/MyMund/proyecto-1a/pull/2  |
-| T03 | `web/planteamiento` | Completar título, objetivo y problemática en `index.html`. | T02 | Joan Ezer Mendoza Martínez | joanezer | Israel Acosta Mundo | En proceso | Por crear |
+| T03 | `web/planteamiento` | Completar título, objetivo y problemática en `index.html`. | T02 | Joan Ezer Mendoza Martínez | joanezer | Israel Acosta Mundo | Integrado | https://github.com/MyMund/proyecto-1a/pull/5 |
 | T04 | `web/metodologia` | Explicar el proceso de análisis, programación, pruebas y colaboración. | T03 | Janetzy Anali Martínez Omaña | 260110400-commits | Israel Acosta Mundo | En revisión | por crear |
 | T05 | `web/integrantes` | Agregar la tabla con nombre, matrícula, correo institucional, fotografía formal y enlace a la página personal de cada integrante. Subir las fotografías. | T04 | Joan Ezer Mendoza Martínez | joanezer | Israel Acosta Mundo | Pendiente | Por crear |
 | T06 | `java/problema-1` | Agregar la solución Java del problema 1 con comentarios. Comprobar compilación y ejecución. | T02 | Israel Acosta Mundo | MyMund | Gabriel Pérez Cruz | En proceso | Por crear |
