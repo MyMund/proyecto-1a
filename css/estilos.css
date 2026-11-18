@@ -1,0 +1,20 @@
+h1 {
+    text-align: center;
+}
+p, h2 {
+    text-align: center;
+}
+.contenedor {
+    display: flex;
+    gap: 40px;
+}
+
+.objetivos {
+    flex: 1;
+    border-right: 1px solid black;
+    padding-right: 40px;
+}
+
+.problematica {
+    flex: 1;
+}
