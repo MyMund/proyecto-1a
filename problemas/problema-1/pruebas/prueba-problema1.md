@@ -23,4 +23,4 @@ El programa determina el porcentaje de impuesto correspondiente según las condi
 - Si ninguna condición es verdadera, se aplica un impuesto del 16%.
 Finalmente, muestra el importe del impuesto y el total de la compra, obtenido al sumar el impuesto al precio base.
 
- ![Pruebas vectoriales](Imagenes/pruebas1.png)
+ ![Pruebas vectoriales](../../../Imagenes/pruebas/pruebas1.png)
