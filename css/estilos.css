@@ -12,6 +12,7 @@ body {
 /* Titulo principal */
 h1 {
     background-color: #102743;
+    text-transform: lowercase;
     color: white;
     text-align: center;
     font-family: Georgia, serif;
@@ -19,6 +20,10 @@ h1 {
     padding: 45px;
     margin: 0 -5.55% 30px;
     border-bottom: 5px solid #BD9145;
+}
+
+h1::first-letter {
+    text-transform: uppercase;
 }
 h2 {
     color: #102743;
