@@ -1,0 +1,192 @@
+Resultados
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de resultados y conclusiones</title>
+</head>
+<body>
+
+    <h2>Análisis de resultados</h2>
+
+    <h3>Problema 1: Evaluador fiscal</h3>
+
+    <p>
+        En este ejercicio se creó un programa que calcula el impuesto de una compra.
+        Para saber qué tasa aplicar, se toman en cuenta dos aspectos: si la persona
+        compradora es estudiante acreditada (P) y si el producto pertenece al
+        catálogo educativo (Q). Al final, el impuesto se suma al precio para obtener
+        el total.
+    </p>
+
+    <p>
+        Para revisar que el programa respondiera correctamente, se probaron las
+        cuatro combinaciones posibles de P y Q. Se utilizó como ejemplo un precio de
+        <strong>$1,000.00</strong>:
+    </p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>P</th>
+                <th>Q</th>
+                <th>Tasa aplicada</th>
+                <th>Impuesto</th>
+                <th>Total a pagar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Verdadero</td>
+                <td>Verdadero</td>
+                <td>0 %</td>
+                <td>$0.00</td>
+                <td>$1,000.00</td>
+            </tr>
+            <tr>
+                <td>Verdadero</td>
+                <td>Falso</td>
+                <td>8 %</td>
+                <td>$80.00</td>
+                <td>$1,080.00</td>
+            </tr>
+            <tr>
+                <td>Falso</td>
+                <td>Verdadero</td>
+                <td>8 %</td>
+                <td>$80.00</td>
+                <td>$1,080.00</td>
+            </tr>
+            <tr>
+                <td>Falso</td>
+                <td>Falso</td>
+                <td>16 %</td>
+                <td>$160.00</td>
+                <td>$1,160.00</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        Al revisar los resultados, se observa que cuando se cumplen las dos
+        condiciones no se cobra impuesto. Si solo se cumple una, se aplica el 8 %;
+        y si no se cumple ninguna, se aplica el 16 %. También es importante probar
+        qué sucede si el precio se deja vacío, se escriben letras o se ingresa un
+        valor negativo. En esos casos, el programa debe indicar que el dato no es
+        válido para evitar un resultado incorrecto.
+    </p>
+
+    <h3>Conclusión del problema 1</h3>
+
+    <p>
+        Este ejercicio permitió comprobar cómo se pueden usar condiciones para
+        resolver un cálculo de manera automática. Las pruebas muestran que el
+        programa aplica la tasa correspondiente en cada caso y calcula el total
+        correctamente. También se comprobó la importancia de revisar los datos
+        ingresados antes de hacer las operaciones.
+    </p>
+
+    <h3>Problema 2: Distancia entre dos puntos</h3>
+
+    <p>
+        En este ejercicio, el programa encuentra la distancia que hay entre dos
+        puntos del plano cartesiano. Primero calcula cuánto cambia la coordenada X
+        y cuánto cambia la coordenada Y. Después utiliza esos resultados en la
+        fórmula de distancia:
+    </p>
+
+    <p>
+        &Delta;x = x<sub>2</sub> - x<sub>1</sub>,
+        &nbsp;&nbsp;
+        &Delta;y = y<sub>2</sub> - y<sub>1</sub>
+    </p>
+
+    <p>
+        d = &radic;((&Delta;x)<sup>2</sup> + (&Delta;y)<sup>2</sup>)
+    </p>
+
+    <p>
+        Por ejemplo, si el punto inicial es P<sub>1</sub> = (0, 0) y el punto final
+        es P<sub>2</sub> = (1, 1), el cambio en X es 1 y el cambio en Y también es 1.
+        Al aplicar la fórmula, la distancia es &radic;2, es decir,
+        aproximadamente <strong>1.4142 unidades</strong>.
+    </p>
+
+    <p>
+        Para revisar el cálculo en otras situaciones, se pueden usar estos casos:
+    </p>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Punto inicial</th>
+                <th>Punto final</th>
+                <th>&Delta;x</th>
+                <th>&Delta;y</th>
+                <th>Distancia</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>(0, 0)</td>
+                <td>(1, 1)</td>
+                <td>1</td>
+                <td>1</td>
+                <td>1.4142</td>
+            </tr>
+            <tr>
+                <td>(-2, 3)</td>
+                <td>(4, -5)</td>
+                <td>6</td>
+                <td>-8</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>(2, -1)</td>
+                <td>(2, -1)</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+            </tr>
+            <tr>
+                <td>(1, 2)</td>
+                <td>(6, 2)</td>
+                <td>5</td>
+                <td>0</td>
+                <td>5</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>
+        Estos ejemplos sirven para comprobar que la fórmula funciona con coordenadas
+        negativas, cuando los dos puntos son iguales y cuando el movimiento ocurre
+        solamente en uno de los ejes. Si alguna coordenada queda vacía o se escribe
+        algo que no sea un número, el programa debe mostrar un aviso en lugar de
+        intentar calcular la distancia.
+    </p>
+
+    <h3>Conclusión del problema 2</h3>
+
+    <p>
+        Con este ejercicio se puso en práctica el cálculo de la distancia entre dos
+        puntos y el uso del teorema de Pitágoras. Los casos de prueba muestran que
+        la fórmula permite obtener el resultado esperado en distintas situaciones.
+        Además, validar las coordenadas ayuda a que el programa no trabaje con datos
+        incompletos o incorrectos.
+    </p>
+
+    <h2>Conclusión general</h2>
+
+    <p>
+        Al trabajar en estos dos problemas, se aplicaron en Java tanto condiciones
+        lógicas como fórmulas matemáticas. En el evaluador fiscal, el resultado
+        depende de las características de la compra; en el cálculo de distancia,
+        depende de las coordenadas de los puntos. Las pruebas ayudan a comprobar
+        que cada programa siga las instrucciones y muestran por qué es importante
+        revisar los datos antes de realizar un cálculo.
+    </p>
+
+</body>
+</html>
