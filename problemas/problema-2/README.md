@@ -2,14 +2,14 @@
 
 ## 1. Enunciado y propósito del problema
 
-El problema consiste en desarrollar un programa que permita calcular la distancia entre dos puntos en un plano cartesiano, a partir de sus coordenadas:
+El problema consiste en desarrollar un programa que permita calcular la distancia entre dos puntos ubicados en un plano cartesiano bidimensional.
 
-- **P1 (x1, y1):** Representa el punto inicial.
-- **P2 (x2, y2):** Representa el punto final.
+Para realizar el cálculo se utilizan las coordenadas de un punto inicial y un punto final:
 
-A partir de estas coordenadas, el programa obtiene los incrementos en los ejes X y Y, y calcula la magnitud del desplazamiento entre ambos puntos mediante el teorema de Pitágoras.
+- **Punto inicial:** \(P_1(x_1,y_1)\).
+- **Punto final:** \(P_2(x_2,y_2)\).
 
-El propósito es automatizar el cálculo de la distancia y los incrementos entre dos puntos mediante operaciones matemáticas y una interfaz gráfica desarrollada en Java.
+El propósito es obtener los incrementos de posición en los ejes X y Y, así como la distancia entre ambos puntos, mediante operaciones matemáticas y programación estructurada en Java. La interacción con el usuario se realiza desde la consola.
 
 ## 2. Entradas, tipos de datos y salidas
 
@@ -17,245 +17,365 @@ El propósito es automatizar el cálculo de la distancia y los incrementos entre
 
 | Entrada | Tipo de dato | Valores válidos | Descripción |
 |---|---|---|---|
-| Coordenada x1 | `double` | Números reales | Coordenada X del punto inicial P1. |
-| Coordenada y1 | `double` | Números reales | Coordenada Y del punto inicial P1. |
-| Coordenada x2 | `double` | Números reales | Coordenada X del punto final P2. |
-| Coordenada y2 | `double` | Números reales | Coordenada Y del punto final P2. |
+| Coordenada \(x_1\) | `double` | Números positivos, negativos o decimales | Coordenada horizontal del punto inicial. |
+| Coordenada \(y_1\) | `double` | Números positivos, negativos o decimales | Coordenada vertical del punto inicial. |
+| Coordenada \(x_2\) | `double` | Números positivos, negativos o decimales | Coordenada horizontal del punto final. |
+| Coordenada \(y_2\) | `double` | Números positivos, negativos o decimales | Coordenada vertical del punto final. |
 
-Los campos permiten números negativos, decimales y notación científica. No se aceptan campos vacíos ni valores que no puedan convertirse a números.
+Las coordenadas se ingresan mediante la consola. Se aceptan números enteros y decimales, positivos o negativos. No se permite ingresar letras ni utilizar notación científica.
 
 ### Salidas
 
 | Salida | Descripción |
 |---|---|
-| Incremento en X (Δx) | Diferencia entre las coordenadas X de ambos puntos. |
-| Incremento en Y (Δy) | Diferencia entre las coordenadas Y de ambos puntos. |
-| Magnitud o distancia (d) | Distancia entre el punto inicial y el punto final, expresada en unidades. |
+| Incremento en X (\(\Delta x\)) | Diferencia entre las coordenadas horizontales de los puntos. |
+| Incremento en Y (\(\Delta y\)) | Diferencia entre las coordenadas verticales de los puntos. |
+| Distancia | Longitud del segmento que une los dos puntos, expresada en unidades. |
+| Mensaje de validación | Informa si las coordenadas son inválidas, si los puntos coinciden o si no es posible representar el resultado. |
 
 ## 3. Procedimiento de solución
 
 ### Fórmulas utilizadas
 
-Para calcular los incrementos entre las coordenadas:
-
-**Incremento en X:**
+Para calcular el incremento en X:
 
 ```text
 Δx = x2 - x1
 ```
 
-**Incremento en Y:**
+Para calcular el incremento en Y:
 
 ```text
 Δy = y2 - y1
 ```
 
-Para calcular la distancia entre los dos puntos se utiliza el teorema de Pitágoras:
+Para obtener la distancia entre los puntos se aplica el teorema de Pitágoras:
+
+$$
+d = \sqrt{(\Delta x)^2 + (\Delta y)^2}
+$$
+
+También puede expresarse de la siguiente manera:
+
+$$
+d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}
+$$
+
+### Condición especial
+
+Antes de realizar los cálculos, el programa verifica que los puntos no tengan las mismas coordenadas.
+
+Si se cumple que:
 
 ```text
-d = √((Δx)² + (Δy)²)
+x1 = x2 Y y1 = y2
 ```
 
-Sustituyendo los incrementos:
-
-```text
-d = √((x2 - x1)² + (y2 - y1)²)
-```
+se muestra un mensaje indicando que los puntos son iguales y se solicita modificar al menos una coordenada en una nueva ejecución.
 
 ### Pasos del procedimiento
 
-1. Solicitar las coordenadas X y Y del punto inicial P1.
-2. Solicitar las coordenadas X y Y del punto final P2.
-3. Verificar que los cuatro campos contengan valores numéricos válidos.
-4. Calcular el incremento en X restando x1 a x2.
-5. Calcular el incremento en Y restando y1 a y2.
-6. Elevar al cuadrado ambos incrementos.
-7. Sumar los resultados obtenidos.
-8. Calcular la raíz cuadrada de la suma para obtener la distancia.
-9. Mostrar los incrementos y la magnitud en la interfaz gráfica.
+1. Solicitar las coordenadas \(x_1\) y \(y_1\) del punto inicial.
+2. Solicitar las coordenadas \(x_2\) y \(y_2\) del punto final.
+3. Validar que cada coordenada tenga un formato numérico permitido.
+4. Comprobar que los dos puntos no sean coincidentes.
+5. Calcular el incremento en X mediante la resta \(x_2-x_1\).
+6. Calcular el incremento en Y mediante la resta \(y_2-y_1\).
+7. Aplicar el teorema de Pitágoras para obtener la distancia.
+8. Verificar que el resultado sea un número válido y finito.
+9. Mostrar los incrementos y la distancia con dos cifras decimales.
 
 ### Pseudocódigo
 
 ```text
 INICIO
 
-    LEER x1, y1
-    LEER x2, y2
+    LEER x1
+    LEER y1
+    LEER x2
+    LEER y2
 
-    SI los valores no son numéricos ENTONCES
-        MOSTRAR "Ingresa coordenadas válidas"
-    SINO
-        incrementoX = x2 - x1
-        incrementoY = y2 - y1
-
-        incrementoXCu = incrementoX ^ 2
-        incrementoYCu = incrementoY ^ 2
-
-        sumaCuadrados = incrementoXCu + incrementoYCu
-
-        distancia = RAIZ(sumaCuadrados)
-
-        MOSTRAR incrementoX
-        MOSTRAR incrementoY
-        MOSTRAR distancia
+    SI x1 = x2 Y y1 = y2 ENTONCES
+        MOSTRAR "Los puntos son iguales"
+        TERMINAR
     FIN SI
+
+    incrementoX = x2 - x1
+    incrementoY = y2 - y1
+
+    distancia = RAIZ(
+        incrementoX * incrementoX +
+        incrementoY * incrementoY
+    )
+
+    SI distancia NO ES FINITA ENTONCES
+        MOSTRAR "No se puede calcular la distancia"
+        TERMINAR
+    FIN SI
+
+    MOSTRAR incrementoX
+    MOSTRAR incrementoY
+    MOSTRAR distancia
 
 FIN
 ```
 
 ## 4. Explicación de las partes principales del programa
 
-El programa está desarrollado en Java utilizando la biblioteca Swing para construir una interfaz gráfica.
+El programa está desarrollado en Java mediante programación estructurada, utilizando métodos, estructuras condicionales y ciclos para organizar el procedimiento. La interacción se realiza mediante la consola, sin utilizar interfaces gráficas ni bibliotecas externas.
 
-### Constructor
+### Método `main()`
 
-El constructor `ModGeometrico()` inicializa los componentes de la interfaz, establece el tamaño y la posición de la ventana, configura los botones y prepara los campos de entrada para validar las coordenadas.
+Es el punto de entrada del programa. Su función es ejecutar directamente el método `calcularDist()`, que contiene el procedimiento principal del problema.
 
-También establece el botón de cálculo como acción predeterminada al presionar Enter y configura la tecla Escape para limpiar los campos.
+### Scanner
 
-### Método `btnCalcularActionPerformed`
+Se utiliza un objeto `Scanner` para recibir las coordenadas que el usuario introduce mediante el teclado.
+
+```java
+static Scanner entrada = new Scanner(System.in);
+```
+
+El objeto permite leer las entradas mediante `entrada.nextLine()` y compartir el mismo mecanismo de lectura entre los métodos del programa.
+
+### Método `calcularDist()`
 
 Es el encargado de ejecutar el procedimiento principal:
 
-- Obtiene las cuatro coordenadas ingresadas.
-- Convierte los valores de texto a tipo `double`.
+- Solicita las cuatro coordenadas mediante el método `leerCo()`.
+- Comprueba que los puntos no sean coincidentes.
 - Calcula los incrementos en X y Y.
-- Eleva al cuadrado ambos incrementos.
-- Suma los cuadrados.
-- Calcula la raíz cuadrada para obtener la distancia.
-- Muestra los resultados en la interfaz.
+- Obtiene la distancia mediante el teorema de Pitágoras.
+- Verifica que el resultado sea válido y finito.
+- Muestra los resultados mediante `System.out.println()`.
 
-### Cálculos matemáticos
+### Validación de puntos coincidentes
 
-Para obtener los incrementos se utilizan las siguientes operaciones:
+El programa utiliza una estructura condicional `if` para comprobar si las coordenadas de ambos puntos son iguales.
+
+```java
+if (x1 == x2 && y1 == y2) {
+    System.out.println("Puntos iguales: modifique al menos una coordenada.");
+    return;
+}
+```
+
+El operador `&&` comprueba que ambas condiciones sean verdaderas. Si los dos puntos coinciden, `return` termina la ejecución del método `calcularDist()`.
+
+### Cálculo de los incrementos
+
+Se obtiene la diferencia entre las coordenadas de ambos puntos:
 
 ```java
 double incrementoX = x2 - x1;
 double incrementoY = y2 - y1;
 ```
 
-Posteriormente, se elevan al cuadrado y se suman:
+Estos valores representan el desplazamiento horizontal y vertical, respectivamente.
+
+### Cálculo de la distancia
+
+Se utiliza `Math.sqrt()` para obtener la raíz cuadrada de la suma de los cuadrados de los incrementos.
 
 ```java
-double incrementoXCu = Math.pow(incrementoX, 2);
-double incrementoYCu = Math.pow(incrementoY, 2);
-
-double sumaCuadrados = incrementoXCu + incrementoYCu;
+double distancia = Math.sqrt(
+    incrementoX * incrementoX + incrementoY * incrementoY
+);
 ```
 
-Finalmente, se calcula la distancia:
+La operación corresponde al teorema de Pitágoras aplicado al plano cartesiano.
+
+### Validación del resultado
+
+Se utilizan los métodos `Double.isInfinite()` y `Double.isNaN()` para comprobar que la distancia no sea infinita ni un valor no numérico.
 
 ```java
-double distancia = Math.sqrt(sumaCuadrados);
+if (Double.isInfinite(distancia) || Double.isNaN(distancia)) {
+    System.out.println("Las coordenadas son demasiado grandes para calcular la distancia.");
+    return;
+}
 ```
 
-### Validación de datos
+Si el resultado no es válido, se muestra un mensaje y se termina el método.
 
-El programa utiliza `Double.parseDouble()` para convertir las coordenadas ingresadas a valores numéricos.
+### Método `leerCo()`
 
-Mediante `try-catch` y la excepción `NumberFormatException`, se detectan campos vacíos o datos que no pueden convertirse a números. En esos casos, se muestra una advertencia al usuario.
+Se encarga de solicitar y validar cada coordenada.
 
-Además, el método `validarCoordenada()` controla los caracteres permitidos mientras se escriben las coordenadas. Admite números, signo negativo, punto decimal y notación científica.
+Recibe un mensaje como parámetro para indicar qué dato debe ingresar el usuario.
 
-### Método `btnLimpiarActionPerformed`
+Utiliza:
 
-Restablece los cuatro campos de coordenadas y los resultados a sus valores iniciales. También devuelve el cursor al primer campo para facilitar un nuevo cálculo.
+- `while`: repite la solicitud mientras el dato sea inválido.
+- `nextLine()`: lee el texto ingresado desde la consola.
+- `trim()`: elimina espacios al inicio y al final del texto.
+- `matches()`: valida el formato del número mediante una expresión regular.
+- `Double.parseDouble()`: convierte el texto en un número decimal.
+- `Double.isInfinite()` y `Double.isNaN()`: comprueban que el valor convertido sea válido.
+- `return`: devuelve la coordenada cuando cumple las condiciones.
 
-### Métodos auxiliares
+La expresión regular utilizada es:
 
-Se incluyen métodos para mejorar la presentación y el funcionamiento de la interfaz:
+```java
+"-?\\d+(\\.\\d+)?"
+```
 
-- `validarCoordenada()`: controla los caracteres permitidos en los campos de coordenadas.
-- `bloquearPegado()`: impide pegar texto en los campos de entrada.
-- `estilizarBoton()`: configura la apariencia de los botones y sus efectos al pasar el cursor.
-- `configurarAtajoEscape()`: permite limpiar los campos mediante la tecla Escape.
-- `formatearNumero()`: muestra los resultados con dos decimales y utiliza notación científica para valores de gran magnitud.
+Esta permite ingresar números enteros o decimales, positivos o negativos, y evita letras y notación científica.
+
+### Formato de los resultados
+
+Se utiliza `String.format("%.2f", valor)` para presentar los incrementos y la distancia con dos cifras decimales.
+
+Las salidas se realizan mediante `System.out.println()`.
 
 ## 5. Instrucciones de compilación y ejecución
 
 ### Requisitos
 
 - Tener instalado el JDK de Java.
-- Contar con el archivo `ModGeometrico.java`.
+- Contar con el archivo `Problema2.java`.
 - Disponer de una terminal o consola para ejecutar los comandos.
+
+No se requieren bibliotecas externas ni el uso de un entorno de desarrollo específico.
 
 ### Estructura de archivos
 
-La siguiente estructura corresponde a una organización sencilla del programa:
-
-```problema-2/
+```text
+problema-2/
 ├── README.md
 ├── src/
-│   └── ModGeometrico.java
+│   └── Problema2.java
 ├── pruebas/
-│   └── prueba-problema2.md
-└── out/
+│   └── pruebas-problema2.md
+└── out/                  # Se genera al compilar el programa
 ```
 
 ### Compilar el programa
 
-Desde la carpeta `problema-2`, ejecutar:
+Desde la carpeta raíz `problema-2`, crear la carpeta de salida:
 
 ```bash
-mkdir -p out
-javac -d out src/ModGeometrico.java
+mkdir out
 ```
 
-Este comando crea la carpeta `out` si no existe y compila el archivo Java, colocando los archivos `.class` generados dentro de ella.
+Después, compilar el archivo que se encuentra dentro de `src`:
+
+```bash
+javac -d out src/Problema2.java
+```
+
+Este comando compila el código fuente y coloca el archivo `Problema2.class` dentro de la carpeta `out`.
 
 ### Ejecutar el programa
 
+Desde la misma carpeta raíz, ejecutar:
+
 ```bash
-java -cp out ModGeometrico
+java -cp out Problema2
 ```
 
-El comando inicia la aplicación gráfica.
+El comando inicia el cálculo de distancia directamente en la consola.
+
+> Si la carpeta `out` ya existe, no es necesario volver a crearla. La carpeta `pruebas` contiene el archivo `pruebas-problema2.md` con los casos de prueba del proyecto.
 
 ### Ingreso de datos
 
-1. Introducir las coordenadas X y Y del punto inicial P1.
-2. Introducir las coordenadas X y Y del punto final P2.
-3. Presionar el botón **Calcular Distancia** para obtener los resultados.
-4. Consultar los incrementos en X y Y, así como la magnitud de la distancia.
-5. Utilizar el botón **Limpiar** para reiniciar los campos y realizar otro cálculo.
+1. Introducir la coordenada \(x_1\) del punto inicial.
+2. Introducir la coordenada \(y_1\) del punto inicial.
+3. Introducir la coordenada \(x_2\) del punto final.
+4. Introducir la coordenada \(y_2\) del punto final.
+5. Consultar los incrementos y la distancia mostrados en la consola.
 
-## 6. Ejemplo de ejecución
+## 6. Ejemplos de ejecución
 
-**Datos de entrada:**
+Para comprobar el funcionamiento del programa, se presentan distintos escenarios utilizando coordenadas de ejemplo.
 
-- Punto inicial: P₁ = (0, 0)
-- Punto final: P₂ = (1, 1)
+### Caso 1: Puntos con incrementos positivos
 
-**Procedimiento:**
+- Punto inicial: \(P_1(1,2)\).
+- Punto final: \(P_2(4,6)\).
 
-1. Calcular el incremento en X:
+**Cálculos:**
 
-   Δx = 1 - 0 = 1
-
-2. Calcular el incremento en Y:
-
-   Δy = 1 - 0 = 1
-
-3. Calcular la distancia:
-
-   d = √((1)² + (1)²)
-
-   d = √(1 + 1)
-
-   d = √2 ≈ 1.4142
+$$
+\begin{aligned}
+\Delta x &= 4 - 1 = 3\\
+\Delta y &= 6 - 2 = 4\\
+d &= \sqrt{3^2 + 4^2} = 5
+\end{aligned}
+$$
 
 **Resultados esperados:**
 
-| Resultado | Valor |
+| Concepto | Resultado |
 |---|---:|
-| Incremento en X (Δx) | 1.00 |
-| Incremento en Y (Δy) | 1.00 |
-| Distancia | 1.41 unidades |
+| Incremento en X | 3.00 |
+| Incremento en Y | 4.00 |
+| Distancia | 5.00 unidades |
 
-El programa muestra los incrementos y la distancia calculada en la interfaz gráfica.
+### Caso 2: Coordenadas negativas
+
+- Punto inicial: \(P_1(-2,-3)\).
+- Punto final: \(P_2(2,0)\).
+
+**Cálculos:**
+
+$$
+\begin{aligned}
+\Delta x &= 2 - (-2) = 4\\
+\Delta y &= 0 - (-3) = 3\\
+d &= \sqrt{4^2 + 3^2} = 5
+\end{aligned}
+$$
+
+**Resultados esperados:**
+
+| Concepto | Resultado |
+|---|---:|
+| Incremento en X | 4.00 |
+| Incremento en Y | 3.00 |
+| Distancia | 5.00 unidades |
+
+### Caso 3: Coordenadas decimales
+
+- Punto inicial: \(P_1(1.5,2.5)\).
+- Punto final: \(P_2(4.5,6.5)\).
+
+**Cálculos:**
+
+$$
+\begin{aligned}
+\Delta x &= 4.5 - 1.5 = 3\\
+\Delta y &= 6.5 - 2.5 = 4\\
+d &= \sqrt{3^2 + 4^2} = 5
+\end{aligned}
+$$
+
+**Resultados esperados:**
+
+| Concepto | Resultado |
+|---|---:|
+| Incremento en X | 3.00 |
+| Incremento en Y | 4.00 |
+| Distancia | 5.00 unidades |
+
+### Caso 4: Puntos coincidentes
+
+- Punto inicial: \(P_1(3,5)\).
+- Punto final: \(P_2(3,5)\).
+
+**Resultado esperado:**
+
+```text
+Puntos iguales: modifique al menos una coordenada.
+```
+
+El programa no continúa con el cálculo cuando ambos puntos tienen las mismas coordenadas.
+
+Estos ejemplos permiten comprobar el cálculo de los incrementos y la distancia, así como la validación de puntos coincidentes.
 
 ## Pruebas del programa
 
-Consulta los casos de prueba realizados para verificar el funcionamiento del programa:
+Consulta los casos de prueba realizados para verificar el funcionamiento del módulo geométrico:
 
-[Ver pruebas del problema 2](pruebas/prueba-problema2.md)
+[Ver pruebas del problema 2](pruebas/pruebas-problema2.md)
